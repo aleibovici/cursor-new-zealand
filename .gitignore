@@ -28,6 +28,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# cursor/ide local
-.cursor/
+# cursor/ide local (project agent config under .cursor/ is tracked)
 .claude/

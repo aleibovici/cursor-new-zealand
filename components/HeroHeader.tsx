@@ -3,6 +3,8 @@
 import React from 'react';
 import BentoGrid from '@/components/BentoGrid';
 import { Button } from '@/components/ui';
+import { upcomingEvents } from '@/content/events';
+import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
 import { HeroBentoPhotos } from '@/lib/types';
 
@@ -12,6 +14,8 @@ type HeroHeaderProps = {
 
 const HeroHeader: React.FC<HeroHeaderProps> = ({ photos }) => {
 	const { t } = useI18n();
+	const eventsHref = upcomingEvents.length > 0 ? '#events' : siteConfig.lumaUrl;
+	const eventsExternal = upcomingEvents.length === 0;
 
 	return (
 		<header className="relative h-[calc(100svh-52px)] min-h-[620px] overflow-hidden border-t border-cursor-border">
@@ -33,9 +37,9 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({ photos }) => {
 					<div className="absolute inset-1 flex flex-col justify-end rounded-2xl border border-cursor-border bg-cursor-surface p-6 md:inset-1.5 md:p-8 lg:p-10">
 						<h1 className="cursor-display max-w-[18ch] text-cursor-text">{t('home.heroHeading')}</h1>
 						<div className="mt-7">
-							<Button href="#events" variant="primary" size="md">
+							<Button href={eventsHref} external={eventsExternal} variant="primary" size="md">
 								{t('home.exploreEvents')}
-								<span aria-hidden="true">→</span>
+								<span aria-hidden="true">{eventsExternal ? '↗' : '→'}</span>
 							</Button>
 						</div>
 					</div>

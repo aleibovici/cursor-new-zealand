@@ -1,0 +1,14 @@
+---
+description: Content-first customization for the Cursor NZ community site
+alwaysApply: true
+---
+
+# Content-first community site
+
+This is **Cursor New Zealand** — a fork of the Cursor Ambassador Evergreen template.
+
+- Put community-specific data in `content/`, not in `components/`.
+- Do not hardcode city, country, ambassador names, or event URLs in components.
+- Prefer editing `content/site.config.ts`, `content/events.ts`, `content/ambassadors.ts`, and locale JSON over changing UI structure.
+- Keep diffs minimal when pulling template updates from `upstream`.
+- Run `pnpm verify` before pushing to `main`.

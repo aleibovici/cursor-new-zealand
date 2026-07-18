@@ -1,0 +1,15 @@
+---
+description: Vercel Hobby deployment for the free community site
+alwaysApply: true
+---
+
+# Vercel deployment (Hobby / free)
+
+- Host on **Vercel Hobby** — no paid features required for this static/marketing Next.js site.
+- Set `NEXT_PUBLIC_SITE_URL=https://cursornewzealand.co.nz` in Vercel project env vars (no trailing slash).
+- Custom domain on Cloudflare DNS; add apex + www in Vercel → Domains (see `.cursor/skills/cloudflare-dns/SKILL.md`).
+- Default build: `pnpm build`, output: Next.js (no custom config needed).
+- GitHub repo: `aleibovici/cursor-new-zealand` (fork of `luisfer/cursor-ambassador-evergreen`).
+- Events/calendar: Luma at `https://lu.ma/cursor-new-zealand`.
+- Use Vercel MCP to inspect deployments and logs when builds fail.
+- `@vercel/analytics` is already included; no extra analytics MCP needed at launch.

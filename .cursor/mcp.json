@@ -1,0 +1,24 @@
+{
+	"mcpServers": {
+		"vercel": {
+			"url": "https://mcp.vercel.com"
+		},
+		"cloudflare-api": {
+			"url": "https://mcp.cloudflare.com/mcp"
+		},
+		"cloudflare-docs": {
+			"url": "https://docs.mcp.cloudflare.com/mcp"
+		},
+		"GitHub": {
+			"command": "docker",
+			"args": ["run", "-i", "--rm", "-e", "GITHUB_PERSONAL_ACCESS_TOKEN", "ghcr.io/github/github-mcp-server"],
+			"env": {
+				"GITHUB_PERSONAL_ACCESS_TOKEN": "${env:GITHUB_PERSONAL_ACCESS_TOKEN}"
+			}
+		},
+		"lighthouse": {
+			"command": "npx",
+			"args": ["-y", "lighthouse-mcp"]
+		}
+	}
+}

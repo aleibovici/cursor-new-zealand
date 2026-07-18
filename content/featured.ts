@@ -1,9 +1,8 @@
 import { FeaturedResource } from '@/lib/types';
 
-// REPLACE: Customize the featured card text and destination for your community.
 export const featuredResource: FeaturedResource = {
-	title: 'Community resources',
-	description: 'Slides, guides, and materials shared by your local Cursor community.',
-	href: '/slides',
-	ctaLabel: 'Browse resources',
+	title: 'Join the community',
+	description: 'Register for upcoming Cursor meetups and workshops across Aotearoa on Luma.',
+	href: 'https://luma.com/cursor-new-zealand',
+	ctaLabel: 'View events on Luma',
 };

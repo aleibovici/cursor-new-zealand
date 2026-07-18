@@ -9,11 +9,17 @@ import LanguageToggle from '@/components/LanguageToggle';
 import { Button } from '@/components/ui';
 import { MarketingColumn, MarketingGrid } from '@/components/layout/MarketingGrid';
 import { siteConfig } from '@/content/site.config';
+import { upcomingEvents } from '@/content/events';
 
 const NAV_LINKS = [
-	{ href: '/#community', sectionId: 'community', key: 'nav.community' },
-	{ href: '/#events', sectionId: 'events', key: 'nav.events' },
-	{ href: '/#recaps', sectionId: 'recaps', key: 'nav.recaps' },
+	{ href: '/#community', sectionId: 'community', key: 'nav.community', external: false },
+	{
+		href: upcomingEvents.length > 0 ? '/#events' : siteConfig.lumaUrl,
+		sectionId: 'events',
+		key: 'nav.events',
+		external: upcomingEvents.length === 0,
+	},
+	{ href: '/#recaps', sectionId: 'recaps', key: 'nav.recaps', external: false },
 ] as const;
 
 function useScrollState() {
@@ -93,16 +99,22 @@ export default function Navbar() {
 						</Link>
 
 						<div className="hidden items-center gap-6 sm:flex">
-							{NAV_LINKS.map(({ href, sectionId, key }) => {
+							{NAV_LINKS.map(({ href, sectionId, key, external }) => {
 								const isActive = activeSection === sectionId;
+								const className = `text-sm transition-colors duration-150 ${
+									isActive ? 'text-cursor-text' : 'text-cursor-text-muted hover:text-cursor-text'
+								}`;
+
+								if (external) {
+									return (
+										<a key={href} href={href} target="_blank" rel="noopener noreferrer" className={className}>
+											{t(key)}
+										</a>
+									);
+								}
+
 								return (
-									<Link
-										key={href}
-										href={href}
-										className={`text-sm transition-colors duration-150 ${
-											isActive ? 'text-cursor-text' : 'text-cursor-text-muted hover:text-cursor-text'
-										}`}
-									>
+									<Link key={href} href={href} className={className}>
 										{t(key)}
 									</Link>
 								);
@@ -133,16 +145,29 @@ export default function Navbar() {
 			{mobileOpen && (
 				<div className="fixed inset-0 top-[52px] z-30 border-t border-cursor-border bg-cursor-bg sm:hidden">
 					<div className="flex flex-col items-center gap-6 pt-12">
-						{NAV_LINKS.map(({ href, key }) => (
-							<Link
-								key={href}
-								href={href}
-								onClick={closeMobile}
-								className="text-lg text-cursor-text-muted hover:text-cursor-text transition-colors"
-							>
-								{t(key)}
-							</Link>
-						))}
+						{NAV_LINKS.map(({ href, key, external }) =>
+							external ? (
+								<a
+									key={href}
+									href={href}
+									target="_blank"
+									rel="noopener noreferrer"
+									onClick={closeMobile}
+									className="text-lg text-cursor-text-muted hover:text-cursor-text transition-colors"
+								>
+									{t(key)}
+								</a>
+							) : (
+								<Link
+									key={href}
+									href={href}
+									onClick={closeMobile}
+									className="text-lg text-cursor-text-muted hover:text-cursor-text transition-colors"
+								>
+									{t(key)}
+								</Link>
+							),
+						)}
 						<LanguageToggle />
 					</div>
 				</div>

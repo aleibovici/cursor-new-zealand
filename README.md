@@ -208,12 +208,30 @@ With fully local images, `next.config.js` does not need remote image domains for
 
 ## Deployment
 
+Production: **https://cursornewzealand.co.nz** (Cloudflare DNS → Vercel Hobby).
+
 ### Vercel
 
 1. Push to GitHub.
 2. Import repository in Vercel.
-3. Set `NEXT_PUBLIC_SITE_URL` to your production domain.
+3. Set `NEXT_PUBLIC_SITE_URL=https://cursornewzealand.co.nz` (no trailing slash).
 4. Deploy with default Next.js settings.
+5. Add domains in Vercel → Settings → Domains: `cursornewzealand.co.nz` and `www.cursornewzealand.co.nz`.
+
+### Cloudflare DNS
+
+Domain is on Cloudflare. Point DNS to Vercel:
+
+| Type  | Name  | Content                | Proxy    |
+| ----- | ----- | ---------------------- | -------- |
+| CNAME | `@`   | `cname.vercel-dns.com` | DNS only |
+| CNAME | `www` | `cname.vercel-dns.com` | DNS only |
+
+Set Cloudflare SSL/TLS to **Full (strict)**. See `.cursor/skills/cloudflare-dns/SKILL.md` for full steps.
+
+### Agent setup (Cursor)
+
+Project MCP and skills live in `.cursor/` — see `AGENTS.md`. Install the Cloudflare marketplace plugin once: `/add-plugin cloudflare`.
 
 ### Other platforms
 

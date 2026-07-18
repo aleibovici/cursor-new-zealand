@@ -7,7 +7,7 @@
 	},
 	"home": {
 		"heroEyebrow": "Cursor Community · {city}",
-		"heroHeading": "Build with Cursor, together.",
+		"heroHeading": "Build with Cursor, together in Aotearoa.",
 		"heroDescription": "Meet local builders, learn practical workflows, and make ambitious software with people nearby.",
 		"exploreEvents": "See upcoming events",
 		"joinCommunity": "Join on Luma",
@@ -31,7 +31,8 @@
 	},
 	"ambassadors": {
 		"title": "Cursor {communityName} ambassadors",
-		"heading": "Meet the Team"
+		"heading": "Meet the Team",
+		"chapterRole": "Ambassador for {chapter}"
 	},
 	"footer": {
 		"hostingPartners": "Hosting Partners",

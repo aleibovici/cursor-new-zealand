@@ -1,0 +1,50 @@
+{
+	"editor.tabSize": 2,
+	"editor.insertSpaces": false,
+	"editor.rulers": [120],
+	"editor.formatOnSave": false,
+	"editor.codeActionsOnSave": {
+		"source.organizeImports": "explicit"
+	},
+	"files.eol": "\n",
+	"files.exclude": {
+		"**/.next": true
+	},
+	"search.exclude": {
+		"**/.next": true,
+		"**/node_modules": true
+	},
+	"files.watcherExclude": {
+		"**/.next/**": true,
+		"**/node_modules/**": true
+	},
+	"npm.packageManager": "pnpm",
+	"typescript.tsdk": "node_modules/typescript/lib",
+	"typescript.enablePromptUseWorkspaceTsdk": true,
+	"typescript.preferences.importModuleSpecifier": "non-relative",
+	"javascript.preferences.importModuleSpecifier": "non-relative",
+	"css.validate": false,
+	"scss.validate": false,
+	"tailwindCSS.experimental.configFile": null,
+	"tailwindCSS.includeLanguages": {
+		"typescript": "javascript",
+		"typescriptreact": "javascript"
+	},
+	"tailwindCSS.emmetCompletions": true,
+	"eslint.enable": false,
+	"[typescript]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "vscode.typescript-language-features"
+	},
+	"[json]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[jsonc]": {
+		"editor.defaultFormatter": "vscode.json-language-features"
+	},
+	"[css]": {
+		"editor.defaultFormatter": "vscode.css-language-features"
+	}
+}

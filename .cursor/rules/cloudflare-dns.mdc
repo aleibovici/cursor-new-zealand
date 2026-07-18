@@ -1,0 +1,14 @@
+---
+description: Cloudflare DNS for cursornewzealand.co.nz pointing to Vercel
+alwaysApply: true
+---
+
+# Cloudflare DNS (cursornewzealand.co.nz)
+
+- Production domain: **https://cursornewzealand.co.nz** (canonical; no trailing slash).
+- DNS registrar/CDN: **Cloudflare**. App hosting: **Vercel Hobby**.
+- `NEXT_PUBLIC_SITE_URL=https://cursornewzealand.co.nz` in Vercel env vars and local `.env.local`.
+- Apex + www: CNAME to `cname.vercel-dns.com` (or Vercel-assigned target), **DNS only** (grey cloud).
+- Cloudflare SSL/TLS: **Full (strict)**.
+- Use **cloudflare-api** and **vercel** MCP for DNS/domain ops; follow `.cursor/skills/cloudflare-dns/SKILL.md`.
+- Install the Cloudflare marketplace plugin once per machine: `/add-plugin cloudflare` (adds platform skills + OAuth MCP).

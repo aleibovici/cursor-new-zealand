@@ -18,7 +18,12 @@ const FeaturedSection: React.FC = () => {
 					{featuredResource.description || t('featured.defaultDescription')}
 				</p>
 
-				<Button href={featuredResource.href} variant="primary" size="md">
+				<Button
+					href={featuredResource.href}
+					external={featuredResource.href.startsWith('http')}
+					variant="primary"
+					size="md"
+				>
 					{featuredResource.ctaLabel || t('home.viewSlides')}
 					<span aria-hidden="true">→</span>
 				</Button>

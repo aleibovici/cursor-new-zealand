@@ -26,6 +26,7 @@ export interface SocialLinks {
 export interface Ambassador {
 	name: string;
 	role?: string;
+	chapter?: string;
 	photo: string;
 	links: SocialLinks;
 }
