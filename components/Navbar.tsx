@@ -55,6 +55,8 @@ export default function Navbar() {
 	const { t } = useI18n();
 	const { scrolled, activeSection } = useScrollState();
 	const [mobileOpen, setMobileOpen] = useState(false);
+	const joinHref = upcomingEvents.length > 0 ? '/#events' : siteConfig.lumaUrl;
+	const joinExternal = upcomingEvents.length === 0;
 
 	const closeMobile = useCallback(() => setMobileOpen(false), []);
 
@@ -120,13 +122,13 @@ export default function Navbar() {
 								);
 							})}
 							<LanguageToggle />
-							<Button href={siteConfig.lumaUrl} external variant="primary" size="sm">
+							<Button href={joinHref} external={joinExternal} variant="primary" size="sm">
 								{t('nav.joinUs')}
 							</Button>
 						</div>
 
 						<div className="flex items-center gap-2 sm:hidden">
-							<Button href={siteConfig.lumaUrl} external variant="primary" size="sm">
+							<Button href={joinHref} external={joinExternal} variant="primary" size="sm">
 								{t('nav.joinUs')}
 							</Button>
 							<button

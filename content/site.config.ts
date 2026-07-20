@@ -3,7 +3,12 @@ export const siteConfig = {
 	communityNameLocal: 'New Zealand',
 	city: 'Auckland',
 	country: 'New Zealand',
-	lumaUrl: 'https://luma.com/cursor-new-zealand',
+	// Fallback when no curated upcoming events exist (primary chapter calendar).
+	lumaUrl: 'https://luma.com/cursor-auckland-nz',
+	lumaChapterCalendars: [
+		{ chapter: 'Auckland', url: 'https://luma.com/cursor-auckland-nz' },
+		{ chapter: 'Christchurch', url: 'https://luma.com/cursor-christchurch-nz' },
+	],
 	// Paste embed URL from Luma → Calendar → Settings → Embed. Leave empty to hide embedded calendar.
 	lumaCalendarEmbedUrl: '',
 	cursorCommunityUrl: 'https://cursor.com/community',
