@@ -1,7 +1,26 @@
 import { CursorEvent } from '@/lib/types';
 
 // Add events here once they're live on Luma — include the event page URL in lumaUrl.
-export const events: CursorEvent[] = [];
+export const events: CursorEvent[] = [
+	{
+		id: 'christchurch-meetup-1',
+		title: 'Cursor Christchurch Meetup #1',
+		status: 'upcoming',
+		date: '2026-07-26',
+		displayDate: 'Sunday, 26 July 2026',
+		location: 'The Arts Centre Te Matatiki Toi Ora · Christchurch',
+		lumaUrl: 'https://luma.com/ydfbgrle',
+	},
+	{
+		id: 'auckland-meetup-1',
+		title: 'Cursor Meetup Auckland',
+		status: 'upcoming',
+		date: '2026-08-19',
+		displayDate: 'Tuesday, 19 August 2026',
+		location: 'GridAKL · Auckland',
+		lumaUrl: 'https://luma.com/wpqmhxst',
+	},
+];
 
 export const upcomingEvents = events.filter((event) => event.status === 'upcoming');
 export const pastEvents = events.filter((event) => event.status === 'past');

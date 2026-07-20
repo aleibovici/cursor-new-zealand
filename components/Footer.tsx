@@ -33,9 +33,11 @@ const Footer: React.FC = () => {
 								<span className="text-sm text-cursor-text-muted">{siteConfig.communityNameLocal}</span>
 							</div>
 							<div className="flex flex-wrap gap-x-5 gap-y-2">
-								<TextLink href={siteConfig.lumaUrl} external muted>
-									{t('footer.allEvents')}
-								</TextLink>
+								{siteConfig.lumaChapterCalendars.map(({ chapter, url }) => (
+									<TextLink key={chapter} href={url} external muted>
+										{t('footer.chapterEvents', { chapter })}
+									</TextLink>
+								))}
 								<TextLink href={siteConfig.cursorCommunityUrl} external muted>
 									{t('footer.community')}
 								</TextLink>
