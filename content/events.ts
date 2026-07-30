@@ -5,11 +5,13 @@ export const events: CursorEvent[] = [
 	{
 		id: 'christchurch-meetup-1',
 		title: 'Cursor Christchurch Meetup #1',
-		status: 'upcoming',
+		status: 'past',
 		date: '2026-07-26',
 		displayDate: 'Sunday, 26 July 2026',
 		location: 'The Arts Centre Te Matatiki Toi Ora · Christchurch',
 		lumaUrl: 'https://luma.com/ydfbgrle',
+		recapPath: '/recaps/christchurch-meetup-1',
+		thumbnail: '/images/events/christchurch-meetup-01-presentation.jpg',
 	},
 	{
 		id: 'auckland-meetup-1',

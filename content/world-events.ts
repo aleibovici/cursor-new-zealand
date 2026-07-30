@@ -2,21 +2,21 @@ import { WorldEventPhoto } from '@/lib/types';
 
 export const worldEventPhotos: WorldEventPhoto[] = [
 	{
-		src: '/images/events/cursor-event-02.jpg',
-		location: 'Bangkok',
-		date: 'December 2025',
-		alt: 'Cafe Cursor Bangkok at Bubble Humble — coffee bar',
+		src: '/images/events/christchurch-meetup-01-presentation.jpg',
+		location: 'Christchurch',
+		date: 'July 2026',
+		alt: 'Cursor Christchurch Meetup — presentation at The Arts Centre',
 	},
 	{
-		src: '/images/events/cursor-event-04.jpg',
-		location: 'Bangkok',
-		date: '2025',
-		alt: 'Cafe Cursor Bangkok at Summer Roaster',
+		src: '/images/events/christchurch-meetup-02-networking.jpg',
+		location: 'Christchurch',
+		date: 'July 2026',
+		alt: 'Cursor Christchurch Meetup — attendees networking',
 	},
 	{
-		src: '/images/events/cursor-event-05.jpg',
-		location: 'Bangkok',
-		date: '2025',
-		alt: 'Welcome sign at Cafe Cursor Bangkok',
+		src: '/images/events/christchurch-meetup-03-swag.jpg',
+		location: 'Christchurch',
+		date: 'July 2026',
+		alt: 'Cursor Christchurch Meetup — community stickers and pins',
 	},
 ];

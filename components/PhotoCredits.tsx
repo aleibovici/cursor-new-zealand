@@ -18,12 +18,7 @@ const PhotoCredits: React.FC<PhotoCreditsProps> = ({ credits, label, className }
 			{credits.map((credit, index) => (
 				<span key={`${credit.name}-${index}`}>
 					{credit.url ? (
-						<a
-							href={credit.url}
-							target="_blank"
-							rel="noopener noreferrer"
-							className="text-cursor-text hover:underline"
-						>
+						<a href={credit.url} target="_blank" rel="noopener noreferrer" className="text-cursor-text hover:underline">
 							{credit.name}
 						</a>
 					) : (
