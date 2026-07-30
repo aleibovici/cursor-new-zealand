@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { AnimatePresence, LayoutGroup, motion } from 'framer-motion';
 import Image from 'next/image';
-import { isPriorityPhoto } from '@/lib/bento-assign';
+import { getTileImageSizes, isPriorityPhoto } from '@/lib/bento-assign';
 import { HeaderPhoto } from '@/lib/types';
 
 type BentoGridProps = {
@@ -28,11 +28,6 @@ const EXPAND_LAYOUT_MS = 220;
 
 function toGridPlacement(start: number, span?: number) {
 	return `${start} / span ${span ?? 1}`;
-}
-
-function getSizes(colSpan: number, cols: number, fallback = 100) {
-	const ratio = Math.min(1, Math.max(colSpan / cols, 0));
-	return `${Math.round(ratio * fallback)}vw`;
 }
 
 function heroExpandLayoutId(variant: TileVariant, index: number): string {
@@ -111,8 +106,9 @@ function BentoTile({
 							alt={photo.alt}
 							fill
 							className="object-cover"
-							sizes={getSizes(photo.colSpan ?? 1, cols)}
+							sizes={getTileImageSizes(variant, photo.colSpan, cols)}
 							priority={priority}
+							loading={priority ? 'eager' : 'lazy'}
 						/>
 					</motion.div>
 				)}
@@ -254,7 +250,10 @@ const BentoGrid: React.FC<BentoGridProps> = ({
 								fill
 								priority
 								className="object-cover"
-								sizes="100vw"
+								sizes={
+									expanded.variant === 'mobile' ? '(max-width: 767px) 100vw, 0px' : '(min-width: 768px) 100vw, 0px'
+								}
+								loading="eager"
 							/>
 						</motion.div>
 					</motion.button>

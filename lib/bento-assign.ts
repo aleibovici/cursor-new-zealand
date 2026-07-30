@@ -51,12 +51,6 @@ function mobileVisibleSlots(slots: BentoSlot[]): BentoSlot[] {
 }
 
 export function assignPhotosToSlots(pool: BentoImage[], slots: BentoSlot[], seed: string): HeaderPhoto[] {
-	if (pool.length < slots.length) {
-		console.warn(
-			`[bento] Image pool (${pool.length}) is smaller than slot count (${slots.length}). Images will repeat.`,
-		);
-	}
-
 	const shuffled = seededShuffle(pool, seed);
 
 	return slots.map((slot, index) => ({
@@ -81,11 +75,37 @@ export function slotArea(slot: Pick<BentoSlot, 'rowSpan' | 'colSpan'>): number {
 	return (slot.rowSpan ?? 1) * (slot.colSpan ?? 1);
 }
 
-export function isPriorityPhoto(photo: HeaderPhoto, photos: HeaderPhoto[]): boolean {
-	const maxArea = Math.max(...photos.map(slotArea));
-	if (slotArea(photo) < maxArea) return false;
+const HERO_COPY_PANEL = { maxRow: 2, maxCol: 2 };
 
-	const largest = photos
+export function overlapsHeroCopyPanel(slot: Pick<BentoSlot, 'row' | 'col' | 'rowSpan' | 'colSpan'>): boolean {
+	const rowEnd = slot.row + (slot.rowSpan ?? 1) - 1;
+	const colEnd = slot.col + (slot.colSpan ?? 1) - 1;
+
+	return slot.row <= HERO_COPY_PANEL.maxRow && rowEnd >= 1 && slot.col <= HERO_COPY_PANEL.maxCol && colEnd >= 1;
+}
+
+export function getTileImageSizes(variant: 'desktop' | 'mobile', colSpan: number | undefined, cols: number): string {
+	const tileVw = Math.round(((colSpan ?? 1) / cols) * 100);
+
+	if (variant === 'mobile') {
+		return `(max-width: 767px) ${tileVw}vw, 0px`;
+	}
+
+	return `(min-width: 768px) ${tileVw}vw, 0px`;
+}
+
+export function isPriorityPhoto(photo: HeaderPhoto, photos: HeaderPhoto[]): boolean {
+	const visiblePhotos = photos.filter((candidate) => !overlapsHeroCopyPanel(candidate));
+	if (visiblePhotos.length === 0 || overlapsHeroCopyPanel(photo)) {
+		return false;
+	}
+
+	const maxArea = Math.max(...visiblePhotos.map(slotArea));
+	if (slotArea(photo) < maxArea) {
+		return false;
+	}
+
+	const largest = visiblePhotos
 		.filter((candidate) => slotArea(candidate) === maxArea)
 		.sort((a, b) => a.row - b.row || a.col - b.col);
 
