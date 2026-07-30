@@ -11,8 +11,10 @@ import Footer from '@/components/Footer';
 import JsonLd from '@/components/JsonLd';
 import MatchmakingSection from '@/components/MatchmakingSection';
 import PhotoDisclaimer from '@/components/PhotoDisclaimer';
+import PhotoCredits from '@/components/PhotoCredits';
 import LumaCalendarSection from '@/components/LumaCalendar';
 import CommunityTweetsSection from '@/components/CommunityTweetsSection';
+import { eventPhotoCreditLabel, eventPhotoCredits } from '@/content/photo-credits';
 import { siteConfig } from '@/content/site.config';
 import { upcomingEvents } from '@/content/events';
 import { MarketingColumn, MarketingGrid } from '@/components/layout/MarketingGrid';
@@ -64,6 +66,19 @@ const Home: React.FC = () => (
 		<JsonLd data={buildHomeJsonLd()} />
 		<Navbar />
 		<HeroHeaderServer />
+		{eventPhotoCredits.length > 0 ? (
+			<div className="border-b border-cursor-border bg-cursor-bg">
+				<MarketingGrid>
+					<MarketingColumn width="wide">
+						<PhotoCredits
+							credits={eventPhotoCredits}
+							label={eventPhotoCreditLabel}
+							className="py-3 text-sm text-cursor-text-muted"
+						/>
+					</MarketingColumn>
+				</MarketingGrid>
+			</div>
+		) : null}
 
 		<div className="py-20 md:py-28">
 			<GridSection>

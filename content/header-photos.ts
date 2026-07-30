@@ -1,34 +1,34 @@
 import { BentoImage } from '@/lib/types';
 
-// REPLACE: Add real event/city images for your community. Layout slots live in bento-slots.ts;
-// images shuffle daily into those fixed slots on the server.
+// Template photos from Cafe Cursor Bangkok — credit in content/photo-credits.ts.
+// REPLACE with NZ event photos when available (then update or clear photo-credits).
 export const headerPhotoPool: BentoImage[] = [
 	{
 		src: '/images/events/cursor-event-01.jpg',
-		alt: 'Cursor community event group photo',
+		alt: 'Cafe Cursor Bangkok — community event group photo',
 	},
 	{
 		src: '/images/events/cursor-event-02.jpg',
-		alt: 'Cursor meetup participants working together',
+		alt: 'Cafe Cursor Bangkok at Bubble Humble — coffee bar',
 	},
 	{
 		src: '/images/events/cursor-event-03.jpg',
-		alt: 'Cursor workshop moment during session',
+		alt: 'Cafe Cursor Bangkok — builders working together',
 	},
 	{
 		src: '/images/events/cursor-event-04.jpg',
-		alt: 'Cursor community photo from event',
+		alt: 'Cafe Cursor Bangkok at Summer Roaster',
 	},
 	{
 		src: '/images/events/cursor-event-05.jpg',
-		alt: 'Cursor meetup attendees in discussion',
+		alt: 'Welcome sign at Cafe Cursor Bangkok',
 	},
 	{
 		src: '/images/events/cursor-event-06.jpg',
-		alt: 'Cursor event participants and speakers',
+		alt: 'Cafe Cursor Bangkok — participants coding together',
 	},
 	{
 		src: '/images/events/cursor-event-07.jpg',
-		alt: 'Cursor community moment from social share',
+		alt: 'Cafe Cursor Bangkok — meetup around the table',
 	},
 ];

@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Mic, Lightbulb, MessageSquareQuote, Link as LinkIcon } from 'lucide-react';
+import PhotoCredits from '@/components/PhotoCredits';
 import PhotoGallery from '@/components/PhotoGallery';
 import { RecapData } from '@/lib/types';
 import { useI18n } from '@/lib/i18n';
@@ -170,26 +171,11 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 				<PhotoGallery photos={recap.photos} embedded />
 
 				{recap.photoCredits && recap.photoCredits.length > 0 ? (
-					<div className="border-t border-cursor-border mt-6 pt-6 text-sm text-cursor-text-muted">
-						<span className="mr-1">Photo credits:</span>
-						{recap.photoCredits.map((credit, index) => (
-							<span key={`${credit.name}-${index}`}>
-								{credit.url ? (
-									<a
-										href={credit.url}
-										target="_blank"
-										rel="noopener noreferrer"
-										className="text-cursor-text hover:underline"
-									>
-										{credit.name}
-									</a>
-								) : (
-									<span className="text-cursor-text">{credit.name}</span>
-								)}
-								{index < recap.photoCredits!.length - 1 ? <span>, </span> : <span>.</span>}
-							</span>
-						))}
-					</div>
+					<PhotoCredits
+						credits={recap.photoCredits}
+						label="Photo credits:"
+						className="mt-6 border-t border-cursor-border pt-6 text-sm text-cursor-text-muted"
+					/>
 				) : null}
 			</div>
 		</section>
