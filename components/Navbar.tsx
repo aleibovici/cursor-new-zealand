@@ -116,9 +116,26 @@ export default function Navbar() {
 								}
 
 								return (
-									<Link key={href} href={href} className={className}>
+									<a
+										key={href}
+										href={href}
+										className={className}
+										onClick={(event) => {
+											if (!sectionId || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+												return;
+											}
+											const el = document.getElementById(sectionId);
+											if (!el) {
+												return;
+											}
+											event.preventDefault();
+											el.scrollIntoView({ behavior: 'smooth' });
+											window.history.pushState(null, '', href);
+											setMobileOpen(false);
+										}}
+									>
 										{t(key)}
-									</Link>
+									</a>
 								);
 							})}
 							<LanguageToggle />
@@ -147,7 +164,7 @@ export default function Navbar() {
 			{mobileOpen && (
 				<div className="fixed inset-0 top-[52px] z-30 border-t border-cursor-border bg-cursor-bg sm:hidden">
 					<div className="flex flex-col items-center gap-6 pt-12">
-						{NAV_LINKS.map(({ href, key, external }) =>
+						{NAV_LINKS.map(({ href, sectionId, key, external }) =>
 							external ? (
 								<a
 									key={href}
@@ -160,14 +177,28 @@ export default function Navbar() {
 									{t(key)}
 								</a>
 							) : (
-								<Link
+								<a
 									key={href}
 									href={href}
-									onClick={closeMobile}
+									onClick={(event) => {
+										if (!sectionId || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+											closeMobile();
+											return;
+										}
+										const el = document.getElementById(sectionId);
+										if (!el) {
+											closeMobile();
+											return;
+										}
+										event.preventDefault();
+										closeMobile();
+										el.scrollIntoView({ behavior: 'smooth' });
+										window.history.pushState(null, '', href);
+									}}
 									className="text-lg text-cursor-text-muted hover:text-cursor-text transition-colors"
 								>
 									{t(key)}
-								</Link>
+								</a>
 							),
 						)}
 						<LanguageToggle />

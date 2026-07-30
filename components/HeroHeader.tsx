@@ -2,7 +2,9 @@
 
 import React from 'react';
 import BentoGrid from '@/components/BentoGrid';
+import PhotoCredits from '@/components/PhotoCredits';
 import { Button } from '@/components/ui';
+import { eventPhotoCreditLabel, eventPhotoCredits } from '@/content/photo-credits';
 import { upcomingEvents } from '@/content/events';
 import { siteConfig } from '@/content/site.config';
 import { useI18n } from '@/lib/i18n';
@@ -42,6 +44,11 @@ const HeroHeader: React.FC<HeroHeaderProps> = ({ photos }) => {
 								<span aria-hidden="true">{eventsExternal ? '↗' : '→'}</span>
 							</Button>
 						</div>
+						<PhotoCredits
+							credits={eventPhotoCredits}
+							label={eventPhotoCreditLabel}
+							className="mt-5 text-xs text-cursor-text-muted"
+						/>
 					</div>
 				</div>
 			</div>

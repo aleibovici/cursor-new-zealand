@@ -9,22 +9,19 @@ import { cardInteractive } from '@/components/ui';
 
 const PastEvents: React.FC = () => {
 	const { t } = useI18n();
-
-	if (pastEvents.length === 0) {
-		return null;
-	}
+	const recapEvents = pastEvents.filter((event) => event.recapPath);
 
 	return (
 		<section id="recaps" className="mb-20 scroll-mt-20">
 			<p className="cursor-eyebrow mb-2">{t('home.pastEvents')}</p>
 			<h2 className="cursor-section-title mb-8 text-cursor-text">{t('home.pastEventsHeading')}</h2>
 
-			<div className="space-y-5">
-				{pastEvents.map((event) => {
-					if (!event.recapPath) return null;
-
-					return (
-						<Link key={event.id} href={event.recapPath} className={`${cardInteractive} group block`}>
+			{recapEvents.length === 0 ? (
+				<p className="text-sm text-cursor-text-muted md:text-base">{t('home.noRecaps')}</p>
+			) : (
+				<div className="space-y-5">
+					{recapEvents.map((event) => (
+						<Link key={event.id} href={event.recapPath!} className={`${cardInteractive} group block`}>
 							<article className={event.thumbnail ? 'grid md:grid-cols-[minmax(0,1.35fr)_minmax(280px,0.9fr)]' : ''}>
 								{event.thumbnail ? (
 									<div className="relative aspect-[16/10] overflow-hidden md:aspect-auto md:min-h-[280px]">
@@ -69,9 +66,9 @@ const PastEvents: React.FC = () => {
 								</div>
 							</article>
 						</Link>
-					);
-				})}
-			</div>
+					))}
+				</div>
+			)}
 		</section>
 	);
 };
