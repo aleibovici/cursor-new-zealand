@@ -10,20 +10,28 @@ function assertKvConfigured(): void {
 	}
 }
 
+function parseRegistration(raw: unknown): CreditRegistration {
+	if (typeof raw === 'string') {
+		return JSON.parse(raw) as CreditRegistration;
+	}
+
+	return raw as CreditRegistration;
+}
+
 export async function saveRegistration(registration: CreditRegistration): Promise<void> {
 	assertKvConfigured();
 	await kv.hset(REGISTRATIONS_KEY, {
-		[registration.email]: JSON.stringify(registration),
+		[registration.email]: registration,
 	});
 }
 
 export async function listRegistrations(): Promise<CreditRegistration[]> {
 	assertKvConfigured();
-	const entries = await kv.hgetall<Record<string, string>>(REGISTRATIONS_KEY);
+	const entries = await kv.hgetall<Record<string, unknown>>(REGISTRATIONS_KEY);
 	if (!entries) return [];
 
 	return Object.values(entries)
-		.map((raw) => JSON.parse(raw) as CreditRegistration)
+		.map(parseRegistration)
 		.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
