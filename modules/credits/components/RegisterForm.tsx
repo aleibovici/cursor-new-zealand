@@ -211,7 +211,7 @@ export default function RegisterForm({ chapters, copy }: RegisterFormProps) {
 					</div>
 				</fieldset>
 
-				<label className="flex min-h-12 cursor-pointer touch-manipulation items-start gap-3 rounded-xl border border-cursor-border bg-cursor-surface px-4 py-4">
+				<label className="flex min-h-12 scroll-mb-36 cursor-pointer touch-manipulation items-start gap-3 rounded-xl border border-cursor-border bg-cursor-surface px-4 py-4 sm:scroll-mb-0">
 					<input
 						type="checkbox"
 						name="confirmed"
