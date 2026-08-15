@@ -75,7 +75,7 @@ export default function RegisterForm({ chapters, copy }: RegisterFormProps) {
 	const confirmLabel = accountStatus === 'has_cursor' ? copy.confirmHasCursor : copy.confirmWillRegister;
 
 	return (
-		<form id={formId} action={formAction} className="space-y-6 pb-28 sm:space-y-7 sm:pb-0" noValidate={false}>
+		<form id={formId} action={formAction} className="space-y-6 pb-36 sm:space-y-7 sm:pb-0" noValidate={false}>
 			<fieldset className="space-y-3 border-0 p-0">
 				<legend className="mb-1 block text-base font-normal text-cursor-text">{copy.subtitle}</legend>
 				<label className="block cursor-pointer touch-manipulation">
