@@ -89,6 +89,7 @@
 	},
 	"credits": {
 		"title": "Cursor credits",
+		"intro": "Register the email on your Cursor account so we can apply meetup credits later.",
 		"subtitle": "Which best describes you?",
 		"hasCursor": "I already have a Cursor account",
 		"hasCursorHelp": "Use the email you sign in to Cursor with (Settings → Account).",
@@ -101,6 +102,7 @@
 		"confirmHasCursor": "This is the email on my Cursor account.",
 		"confirmWillRegister": "I will register Cursor with this exact email.",
 		"submit": "Register for credits",
+		"submitting": "Submitting…",
 		"successTitle": "You're registered",
 		"successBody": "We'll apply meetup credits to this email once they're ready.",
 		"rateLimited": "Please wait a moment before trying again.",
