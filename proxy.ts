@@ -1,7 +1,9 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
+import { COOKIE_NAME, verifySessionToken } from '@/modules/credits/lib/admin-auth';
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
+	const { pathname } = request.nextUrl;
 	const nonce = crypto.randomUUID();
 	const isDev = process.env.NODE_ENV === 'development';
 
@@ -29,6 +31,22 @@ export function proxy(request: NextRequest) {
 		request: { headers: requestHeaders },
 	});
 	response.headers.set('Content-Security-Policy', csp);
+
+	if (pathname.startsWith('/credits/admin')) {
+		const token = request.cookies.get(COOKIE_NAME)?.value;
+		const authed = token ? await verifySessionToken(token) : false;
+
+		if (pathname === '/credits/admin/login') {
+			if (authed) {
+				return NextResponse.redirect(new URL('/credits/admin', request.url));
+			}
+			return response;
+		}
+
+		if (!authed) {
+			return NextResponse.redirect(new URL('/credits/admin/login', request.url));
+		}
+	}
 
 	return response;
 }

@@ -23,6 +23,9 @@ export const siteConfig = {
 		lumaCalendar: false,
 		communityTweets: false,
 	},
+	credits: {
+		path: '/credits',
+	},
 };
 
 export type SiteConfig = typeof siteConfig;

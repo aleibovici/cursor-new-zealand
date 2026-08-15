@@ -30,3 +30,6 @@ next-env.d.ts
 
 # cursor/ide local (project agent config under .cursor/ is tracked)
 .claude/
+.agents/
+skills-lock.json
+.env*

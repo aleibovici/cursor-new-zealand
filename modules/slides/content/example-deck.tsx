@@ -1,6 +1,9 @@
 import CodeBlock from '@/modules/slides/components/CodeBlock';
 import PromptBlock from '@/modules/slides/components/PromptBlock';
 import DiagramSlide from '@/modules/slides/components/DiagramSlide';
+import CreditsQrSlide from '@/modules/credits/components/CreditsQrSlide';
+import { creditsCopy } from '@/content/credits';
+import { siteConfig } from '@/content/site.config';
 import {
 	SlideBody,
 	SlideCallout,
@@ -10,6 +13,9 @@ import {
 	TitleCard,
 } from '@/modules/slides/components/primitives';
 import { Slide } from '@/modules/slides/types';
+
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000').replace(/\/$/, '');
+const creditsUrl = `${siteUrl}${siteConfig.credits.path}`;
 
 /**
  * Skeleton deck — replace with your workshop content.
@@ -113,6 +119,19 @@ export const hello = () => {
 	},
 	{
 		id: 7,
+		title: 'Cursor credits',
+		type: 'content',
+		content: (
+			<CreditsQrSlide
+				url={creditsUrl}
+				title={creditsCopy.qrTitle}
+				instruction={creditsCopy.qrInstruction}
+				hint={creditsCopy.qrHint}
+			/>
+		),
+	},
+	{
+		id: 8,
 		title: 'Thank you',
 		type: 'title',
 		content: (
