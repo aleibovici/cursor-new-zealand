@@ -16,13 +16,18 @@ export const events: CursorEvent[] = [
 	{
 		id: 'auckland-meetup-1',
 		title: 'Cursor Meetup Auckland',
-		status: 'upcoming',
+		status: 'past',
 		date: '2026-08-19',
 		displayDate: 'Tuesday, 19 August 2026',
 		location: 'GridAKL · Auckland',
 		lumaUrl: 'https://luma.com/wpqmhxst',
+		recapPath: '/recaps/auckland-meetup-1',
+		thumbnail: '/images/events/auckland-meetup-05-agenda.webp',
 	},
 ];
 
 export const upcomingEvents = events.filter((event) => event.status === 'upcoming');
-export const pastEvents = events.filter((event) => event.status === 'past');
+
+export const pastEvents = events
+	.filter((event) => event.status === 'past')
+	.sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
