@@ -35,6 +35,13 @@
 		"heading": "Meet the Team",
 		"chapterRole": "Ambassador for {chapter}"
 	},
+	"whatsapp": {
+		"eyebrow": "Stay connected",
+		"heading": "Join us on WhatsApp",
+		"description": "Chat with local builders, get event updates, and stay in the loop between meetups. Scan the QR code or tap the button to join.",
+		"cta": "Open WhatsApp group",
+		"qrAlt": "QR code to join the Cursor New Zealand WhatsApp community"
+	},
 	"footer": {
 		"hostingPartners": "Hosting Partners",
 		"community": "Cursor Community",

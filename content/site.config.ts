@@ -22,6 +22,7 @@ export const siteConfig = {
 		photoDisclaimer: true,
 		lumaCalendar: false,
 		communityTweets: false,
+		whatsappCommunity: true,
 	},
 	credits: {
 		path: '/credits',
