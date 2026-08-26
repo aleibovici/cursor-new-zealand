@@ -133,4 +133,5 @@ export interface SiteSections {
 	photoDisclaimer?: boolean;
 	lumaCalendar?: boolean;
 	communityTweets?: boolean;
+	whatsappCommunity?: boolean;
 }

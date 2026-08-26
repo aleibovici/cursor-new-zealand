@@ -13,6 +13,7 @@ import MatchmakingSection from '@/components/MatchmakingSection';
 import PhotoDisclaimer from '@/components/PhotoDisclaimer';
 import LumaCalendarSection from '@/components/LumaCalendar';
 import CommunityTweetsSection from '@/components/CommunityTweetsSection';
+import WhatsAppCommunitySection from '@/components/WhatsAppCommunitySection';
 import { siteConfig } from '@/content/site.config';
 import { upcomingEvents } from '@/content/events';
 import { MarketingColumn, MarketingGrid } from '@/components/layout/MarketingGrid';
@@ -69,6 +70,11 @@ const Home: React.FC = () => (
 			<GridSection>
 				<AmbassadorSection />
 			</GridSection>
+			{siteConfig.sections.whatsappCommunity ? (
+				<GridSection width="reading">
+					<WhatsAppCommunitySection />
+				</GridSection>
+			) : null}
 			<GridSection>
 				<SectionDivider />
 			</GridSection>
