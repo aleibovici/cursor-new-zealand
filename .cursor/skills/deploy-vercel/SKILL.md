@@ -46,3 +46,4 @@ description: Deploy Cursor New Zealand to Vercel Hobby (free) with Cloudflare DN
 
 - Hobby plan covers community traffic for this marketing site.
 - No Vercel Pro features required unless you need team seats or advanced analytics.
+- Preview deployments are disabled in `vercel.json` (`git.deploymentEnabled`: only `main` deploys).
