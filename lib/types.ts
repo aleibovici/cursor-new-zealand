@@ -84,9 +84,15 @@ export interface RecapPhotoCredit {
 
 export interface RecapSpeaker {
 	name: string;
-	topic: string;
+	topic?: string;
 	photo?: string;
 	url?: string;
+}
+
+export interface RecapVideo {
+	src: string;
+	alt: string;
+	poster?: string;
 }
 
 export interface RecapProject {
@@ -119,6 +125,7 @@ export interface RecapData {
 	resources?: RecapResource[];
 	photoCredits?: RecapPhotoCredit[];
 	photos: GalleryPhoto[];
+	videos?: RecapVideo[];
 }
 
 export interface WorldEventPhoto {

@@ -3,6 +3,16 @@ import { CursorEvent } from '@/lib/types';
 // Add events here once they're live on Luma — include the event page URL in lumaUrl.
 export const events: CursorEvent[] = [
 	{
+		id: 'auckland-meetup-2',
+		title: 'Grok Bot Meetup Auckland',
+		status: 'past',
+		date: '2026-10-08',
+		displayDate: 'Thursday, 8 October 2026',
+		location: "Pioneer Women's Hall, Ellen Melville Centre, 2 Freyberg Place · Auckland CBD",
+		recapPath: '/recaps/auckland-meetup-2',
+		thumbnail: '/images/events/auckland-meetup-2-01.webp',
+	},
+	{
 		id: 'christchurch-meetup-1',
 		title: 'Cursor Christchurch Meetup #1',
 		status: 'past',
