@@ -78,7 +78,7 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 										) : (
 											<p className="text-cursor-text font-medium text-sm">{speaker.name}</p>
 										)}
-										<p className="text-cursor-text-muted text-xs mt-0.5">{speaker.topic}</p>
+										{speaker.topic ? <p className="text-cursor-text-muted text-xs mt-0.5">{speaker.topic}</p> : null}
 									</div>
 								</div>
 							))}
@@ -165,6 +165,36 @@ const EventRecap: React.FC<EventRecapProps> = ({ recap }) => {
 								</li>
 							))}
 						</ul>
+					</div>
+				) : null}
+
+				{recap.videos && recap.videos.length > 0 ? (
+					<div className="border-t border-cursor-border mt-6 pt-6">
+						<div className="flex items-baseline justify-between gap-4 mb-6">
+							<div>
+								<h2 className="text-lg font-normal text-cursor-text">{t('recap.videosTitle')}</h2>
+								<p className="text-cursor-text-muted text-sm mt-1">
+									{t('recap.videosSubtitle', { count: String(recap.videos.length) })}
+								</p>
+							</div>
+						</div>
+						<div className="grid gap-4 sm:grid-cols-2">
+							{recap.videos.map((video) => (
+								<figure key={video.src} className="min-w-0">
+									<video
+										controls
+										preload="none"
+										playsInline
+										poster={video.poster}
+										aria-label={video.alt}
+										className="aspect-video w-full rounded-sm border border-cursor-border bg-cursor-bg-dark"
+									>
+										<source src={video.src} type="video/mp4" />
+									</video>
+									<figcaption className="text-cursor-text-muted text-xs mt-2 leading-relaxed">{video.alt}</figcaption>
+								</figure>
+							))}
+						</div>
 					</div>
 				) : null}
 

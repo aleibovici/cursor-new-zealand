@@ -63,6 +63,8 @@
 		"by": "by",
 		"galleryTitle": "Photos",
 		"gallerySubtitle": "{count} photos from the event",
+		"videosTitle": "Videos",
+		"videosSubtitle": "{count} clips from the event",
 		"openPhoto": "Open photo {index}",
 		"closeGallery": "Close gallery",
 		"prevPhoto": "Previous photo",
